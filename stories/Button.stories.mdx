@@ -2,28 +2,36 @@
  * @Author: xuwenjie
  * @Date: 2020-10-19 12:05:33
  * @LastEditors: xuwenjie
- * @LastEditTime: 2020-10-19 17:48:30
+ * @LastEditTime: 2020-10-23 16:14:45
  * @Description:  
  * @FilePath: /story-book-demo/stories/Button.stories.mdx
 -->
 
 <!---Button.stories.mdx --->
-
+import { useState } from 'react';
 import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs/blocks';
+import { useArgTypes } from '@storybook/api';
 
 import { Button } from './Button';
 
 <Meta title="MDX/Button" component={Button} argTypes={{
-  backgroundColor: { control :'color'},
-  primary: { control: 'boolean'}
-}} />
+    backgroundColor: { control: 'color' },
+  }}/>
 
 
 <!--- This is your Story template function, shown here in React -->
 
 export const Template = (args) => <Button {...args } />
 
-const tp = Template.bind({});
+```js
+
+<Meta title="MDX/Button" component={Button} argTypes={{
+    backgroundColor: { control: 'color' },
+  }}/>
+
+
+```
+
 
 
 # Button  
@@ -37,17 +45,32 @@ const tp = Template.bind({});
 We can drop it in a `Canvas` to get a code snippet:
 
 
-<Canvas>
   <Story name='component1'>
     <Button label="label" primary={true} onClick={() => alert('sdfdf')} />
   </Story>
-</Canvas>
 
 this is other type
 
 <Canvas>
-  <Story name='component2' args={{primary:true,label:'com2'}}>
-    {tp}
+  <Button label="label" primary={true} onClick={() => alert('sdfdf')} />
+</Canvas>
+
+  <Story name="sdfsfs" args={{label:"xxxx"}}>
+    {Template.bind({})}
+  </Story>
+
+
+
+
+<Canvas>
+  <Story name='component2'>
+     {
+       () => {
+          const [counter, setCounter] = useState(0);
+          const label = `Testing: ${counter}`;
+          return (<Button primary={true} onClick={() => setCounter(counter + 1)} label={label}></Button>);
+        }
+    }
   </Story>
 </Canvas>
 

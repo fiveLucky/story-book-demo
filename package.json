@@ -14,7 +14,9 @@
     "babel-loader": "^8.1.0",
     "react-is": "^16.13.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@storybook/addon-a11y": "^6.0.26"
+  },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
