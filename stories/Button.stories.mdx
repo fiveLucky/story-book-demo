@@ -1,0 +1,81 @@
+<!--
+ * @Author: xuwenjie
+ * @Date: 2020-10-19 12:05:33
+ * @LastEditors: xuwenjie
+ * @LastEditTime: 2020-10-19 17:48:30
+ * @Description:  
+ * @FilePath: /story-book-demo/stories/Button.stories.mdx
+-->
+
+<!---Button.stories.mdx --->
+
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs/blocks';
+
+import { Button } from './Button';
+
+<Meta title="MDX/Button" component={Button} argTypes={{
+  backgroundColor: { control :'color'},
+  primary: { control: 'boolean'}
+}} />
+
+
+<!--- This is your Story template function, shown here in React -->
+
+export const Template = (args) => <Button {...args } />
+
+const tp = Template.bind({});
+
+
+# Button  
+
+>This is a multiple types component.
+
+###  Props
+
+<ArgsTable of={Button}/>
+
+We can drop it in a `Canvas` to get a code snippet:
+
+
+<Canvas>
+  <Story name='component1'>
+    <Button label="label" primary={true} onClick={() => alert('sdfdf')} />
+  </Story>
+</Canvas>
+
+this is other type
+
+<Canvas>
+  <Story name='component2' args={{primary:true,label:'com2'}}>
+    {tp}
+  </Story>
+</Canvas>
+
+
+We can even preview multiple Stories in a block. This
+gets rendered as a group, but defines individual stories
+with unique URLs which is great for review and testing.
+<!-- 
+<Canvas>
+  <Story name="warning" args={{
+      label: 'Warning',
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="neutral" args={{
+      label: 'Neutral',
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="error" args={{
+      label: 'Error',
+  }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="with icon" args={{
+    label:'sdffds',
+  )}}>
+    {Template.bind({})}
+  </Story>
+</Story>
+</Canvas> -->
